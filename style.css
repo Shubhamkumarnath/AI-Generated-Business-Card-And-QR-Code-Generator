@@ -1,0 +1,193 @@
+/* Base styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #222;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+header {
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+}
+
+form > div {
+  margin-bottom: 1.2rem;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+input[type="file"] {
+  width: 100%;
+  padding: 0.65rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: border 0.2s;
+}
+
+input:focus,
+select:focus {
+  border-color: #2a5298;
+  outline: none;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  background-color: #2a5298;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1e3c72;
+}
+
+.template-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.template-option {
+  flex: 1 1 30%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.template-option:hover {
+  background-color: #e0e0e0;
+}
+
+.preview {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Dark mode */
+.dark-mode {
+  background-color: #181818;
+  color: #f5f5f5;
+}
+
+.dark-mode .container {
+  background-color: #262626;
+  color: #fff;
+}
+
+.dark-mode input,
+.dark-mode select {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.dark-mode button {
+  background-color: #444;
+}
+
+.dark-mode button:hover {
+  background-color: #2a2a2a;
+}
+
+.dark-mode .template-option {
+  background-color: #333;
+  color: #fff;
+  border-color: #444;
+}
+
+.dark-mode .template-option:hover {
+  background-color: #444;
+}
+
+/* Business card preview */
+.business-card {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  padding: 2rem;
+  color: #000;
+  height: 250px;
+}
+
+.business-card .info {
+  flex: 2;
+}
+
+.business-card .profile-pic {
+  flex: 1;
+  text-align: right;
+}
+
+.business-card .profile-pic img {
+  max-height: 120px;
+  max-width: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #2a5298;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .business-card {
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+    padding: 1.5rem;
+  }
+
+  .business-card .profile-pic {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .template-grid {
+    flex-direction: column;
+  }
+
+  .template-option {
+    flex: 1 1 100%;
+  }
+}
+

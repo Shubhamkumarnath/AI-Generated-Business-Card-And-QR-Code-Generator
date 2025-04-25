@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Business Card Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header>
+    <h1>✨ AI Business Card Generator</h1>
+    <p>Create stunning business cards with AI-generated templates</p>
+  </header>
+
+  <div class="container">
+    <h2>🔍 Enter Your Details</h2>
+    <form action="/" method="post" enctype="multipart/form-data">
+      <div><label>Full Name</label><input type="text" name="name" required /></div>
+      <div><label>Job Title</label><input type="text" name="title" required /></div>
+      <div><label>Company Name</label><input type="text" name="company" required /></div>
+      <div><label>Email</label><input type="email" name="email" required /></div>
+      <div><label>Phone Number</label><input type="text" name="phone" required /></div>
+      <div><label>Website</label><input type="text" name="website" /></div>
+      <div><label>Address</label><input type="text" name="address" /></div>
+
+      <div>
+        <label>Font Style</label>
+        <select name="font_name">
+          <option value="Arial">Arial</option>
+          <option value="Roboto">Roboto</option>
+          <option value="Poppins">Poppins</option>
+          <option value="Lato">Lato</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Preferred Colors</label>
+        <input type="text" name="colors" placeholder="e.g. #ff0000, #000000" />
+      </div>
+
+      <div>
+        <label>Upload Logo</label>
+        <input type="file" name="logo" />
+      </div>
+
+      <div>
+        <label>Upload Profile Photo</label>
+        <input type="file" name="profile_pic" />
+      </div>
+
+      <div>
+        <label>Upload Background Image</label>
+        <input type="file" name="background" />
+      </div>
+
+      <fieldset class="template-grid">
+        <legend>Select a Template:</legend>
+        {% for i in range(1, 7) %}
+          <label class="template-option">
+            <input type="radio" name="layout" value="{{ i }}" {% if i == 1 %}checked{% endif %}/> Template {{ i }}
+          </label>
+        {% endfor %}
+      </fieldset>
+
+      <div>
+        <label>Theme</label>
+        <select name="theme">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+
+      <button type="submit">🚀 Generate Business Card</button>
+    </form>
+
+    {% if card_path %}
+    <div class="preview">
+      <h2>📌 Card Preview</h2>
+      <img src="{{ url_for('static', filename=card_path.split('static/')[-1]) }}" alt="Generated Business Card" />
+
+      <br/><br/>
+      <a href="{{ url_for('static', filename=card_path.split('static/')[-1]) }}" download="business_card.png">
+        <button>📥 Download Card</button>
+      </a>
+
+      {% if qr_path %}
+      <h3>📱 vCard QR Code</h3>
+      <img src="{{ url_for('static', filename=qr_path.split('static/')[-1]) }}" alt="QR Code" style="width: 150px; height: 150px;" />
+      <br/>
+      <a href="{{ url_for('static', filename=qr_path.split('static/')[-1]) }}" download>
+        <button>📥 Download QR</button>
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="theme-toggle">
+      <button onclick="document.body.classList.toggle('dark-mode')">🌓 Toggle Theme</button>
+    </div>
+  </div>
+</body>
+</html>
